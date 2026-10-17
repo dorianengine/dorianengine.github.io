@@ -268,3 +268,11 @@ figure .ph.video{width:100%}
 .icons a,.icons a:hover{border-radius:5pt;background:none;overflow:visible}
 .icons a img{border-radius:5pt;object-fit:contain}
 .icons a:hover{box-shadow:0 0 0 4px var(--orange)}
+
+/* nav : 5 boutons (About me ajouté) */
+.nav{grid-template-columns:repeat(5,1fr)}
+.nav a{font-size:clamp(.85rem,1.35vw,1.4rem)}
+@media (max-width:800px){.nav{grid-template-columns:repeat(2,1fr)}}
+/* About : logiciels, texte à gauche / bloc logos à droite */
+.card .row.r23{grid-template-columns:2fr 3fr;align-items:start}
+.card .row .x{height:auto}
