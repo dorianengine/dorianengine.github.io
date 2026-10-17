@@ -1,0 +1,233 @@
+/* ============ Charte : années 70 — violet + orange ============ */
+:root {
+  /* violet / mauve : du clair au foncé */
+  --lilac: #e0aaf5;
+  --magenta: #cc55f5;
+  --violet: #7a00ff;   /* flash : uniquement boutons, hover, accents */
+  --plum: #55216a;
+  /* orange : du clair au foncé */
+  --peach: #f2cbae;
+  --coral: #f5a869;    /* orange clair */
+  --orange: #ff9d00;
+  --brown: #66402a;
+
+  --black: #1c1c1c;
+  --radius: 12px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Century Gothic', 'Questrial', sans-serif;   /* texte normal */
+  font-size: 1.15rem;
+  color: var(--black);
+  background: var(--peach);
+  line-height: 1.5;
+}
+
+/* Fond rétro : lignes orange déformées en vagues (filtre #wave, défini dans le HTML) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: -5%;          /* déborde pour que la déformation et le flou ne laissent pas de bords */
+  z-index: -1;
+  pointer-events: none;
+  opacity: .25;
+  background: repeating-linear-gradient(0deg,
+    var(--orange) 30px 90px,
+    var(--coral) 90px 130px,
+    var(--peach) 130px 210px,
+    var(--orange) 210px 300px);
+  filter: url(#wave) blur(20px);
+}
+
+.container { max-width: 1400px; margin: 0 auto; padding: 0 1.2rem 3rem; }
+section { margin-bottom: 1rem; }
+
+/* ---------- Header : logo + menu ---------- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1.5rem 1.2rem;
+}
+
+.logo {
+  display: inline-block;
+  margin: 12px;
+  padding: 0 .8rem;                          /* le texte remplit le rectangle */
+  font-family: 'Lobster', cursive;           /* titre de page */
+  font-size: 4.2rem;
+  line-height: 1.15;
+  color: var(--black);
+  text-decoration: none;
+  background: var(--lilac);
+  border-radius: var(--radius);
+  box-shadow: 0 0 0 6px var(--magenta), 0 0 0 12px var(--violet);
+}
+
+nav { display: flex; flex-wrap: wrap; gap: 1rem; }
+
+nav a {
+  padding: .1rem .7rem;                      /* le texte remplit le rectangle */
+  font-family: 'Archivo Black', sans-serif;  /* titres, sous-titres */
+  font-size: 2.1rem;
+  line-height: 1.15;
+  -webkit-text-stroke: 1px currentColor;     /* encore plus gras */
+  color: var(--black);
+  text-decoration: none;
+  background: var(--magenta);
+  border-radius: var(--radius);
+  transition: transform .15s, box-shadow .15s, background .15s;
+}
+nav a.on { background: var(--lilac); }        /* page en cours */
+
+/* ---------- Hover : uniquement le menu et les boutons ---------- */
+nav a:hover, .btn:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 4px 4px 0 var(--lilac), 8px 8px 0 var(--magenta);
+}
+nav a:hover { color: #fff; background: var(--violet); }
+
+/* ---------- Boxes : le texte remplit presque toute la bulle ---------- */
+.title-box, .box, .desc {
+  display: flex;
+  align-items: center;
+  border-radius: var(--radius);
+}
+
+.title-box {
+  justify-content: center;
+  padding: .3rem .8rem;                      /* la taille du texte est ajustée en JS pour remplir la box */
+  font-family: 'Archivo Black', sans-serif;
+  font-size: clamp(2rem, 3.4vw, 3rem);       /* valeur de secours si le JS ne tourne pas */
+  line-height: 1;
+  white-space: nowrap;
+  -webkit-text-stroke: 1.5px currentColor;   /* encore plus gras */
+  background: var(--orange);
+}
+
+.box {
+  padding: .6rem 1.3rem;
+  font-size: clamp(1.5rem, 2.8vw, 2.6rem);
+  line-height: 1.2;
+  background: var(--coral);
+}
+
+.desc {
+  padding: .8rem 1.3rem;
+  font-size: clamp(1.4rem, 2.3vw, 2.1rem);
+  line-height: 1.25;
+  background: var(--lilac);
+}
+
+.btn {
+  display: inline-block;
+  padding: .55rem 1.4rem;
+  font: inherit;
+  font-size: 1.7rem;
+  color: #fff;
+  text-decoration: none;
+  background: var(--violet);
+  border: 0;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: transform .15s, box-shadow .15s;
+}
+
+/* ---------- Haut de page ---------- */
+.top-row {
+  display: grid;
+  grid-template-columns: 1fr 1.7fr;
+  gap: 3rem;
+  margin-top: 1.5rem;
+}
+
+/* ---------- Barre qui change de couleur ---------- */
+.bar {
+  height: 20px;
+  margin: 2.8rem 0;
+  border-radius: 10px;
+  animation: cycle 30s linear infinite;
+}
+@keyframes cycle {
+  0%, 100% { background-color: #e0aaf5; }
+  14%      { background-color: #cc55f5; }
+  28%      { background-color: #7a00ff; }
+  42%      { background-color: #55216a; }
+  57%      { background-color: #66402a; }
+  71%      { background-color: #ff9d00; }
+  86%      { background-color: #f5a869; }
+}
+
+/* ---------- Un jeu / projet ---------- */
+.game {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 2rem 3rem;
+}
+.game .left { display: grid; grid-template-rows: auto 1fr; gap: 1.4rem; }
+.game .desc { min-height: 280px; align-items: flex-start; }
+
+.game .right { display: grid; justify-items: center; align-content: start; gap: 2.2rem; }
+
+/* icône du jeu : seule image avec le hover spécial (cadre brun, orange, clair) */
+.feat {
+  width: 130px;
+  height: 130px;
+  margin-top: 18px;
+  transition: box-shadow .15s;
+}
+.feat:hover { box-shadow: 0 0 0 6px var(--brown), 0 0 0 12px var(--orange), 0 0 0 18px var(--coral); }
+
+.thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; width: 100%; }
+.thumbs .ph { aspect-ratio: 1.15; }
+
+/* bouton centré */
+.cta { grid-column: 1 / -1; text-align: center; margin: .5rem 0; }
+
+/* Placeholders d'images : remplace-les par <img src="..."> */
+.ph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--black);
+  text-decoration: none;
+  background: #fff;
+  border-radius: 10px;
+}
+img.ph, .ph img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; }
+
+/* ---------- À propos / contact ---------- */
+.about, .contact { max-width: 900px; }
+.about .title-box, .contact .title-box { display: inline-flex; margin-bottom: 1.4rem; }
+
+form { display: grid; gap: 1rem; }
+form .btn { justify-self: start; }
+
+input, textarea {
+  padding: .8rem 1rem;
+  font: inherit;
+  font-size: 1.3rem;
+  color: var(--black);
+  background: var(--lilac);
+  border: 2px solid transparent;
+  border-radius: var(--radius);
+}
+input:focus, textarea:focus { outline: none; border-color: var(--plum); }
+::placeholder { color: var(--plum); opacity: .7; }
+
+footer { padding: 1.5rem 1rem; text-align: center; color: var(--peach); background: var(--brown); }
+
+/* ---------- Mobile ---------- */
+@media (max-width: 800px) {
+  header { justify-content: center; }
+  .logo { font-size: 2.8rem; }
+  nav a { font-size: 1.1rem; }
+  .top-row, .game { grid-template-columns: 1fr; gap: 1.5rem; }
+}

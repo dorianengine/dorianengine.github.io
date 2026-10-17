@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Game page – Dorian Wiame</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Lobster&family=Questrial&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <!-- MODÈLE de page détaillée d'un jeu ("click to learn more").
+       Copie ce fichier pour chaque jeu (sur le site actuel : OFEU arcade et Be still). -->
+
+  <header class="top">
+    <a class="block logo" href="about.html"><span>Dorian Wiame</span></a>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="games.html" class="on">My games</a>
+      <a href="the-wrong-path.html">The wrong path</a>
+      <a href="audio.html">Audio product</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <div class="card">
+      <div class="t">Game title</div>
+      <div class="x">Intro text.</div>
+    </div>
+
+    <!-- Texte + 3 images empilées -->
+    <div class="card">
+      <div class="t">Section title</div>
+      <div class="x">Text.</div>
+      <div class="imgs" style="--n:1">
+        <div class="ph wide">image</div>
+        <div class="ph wide">image</div>
+        <div class="ph wide">image</div>
+      </div>
+    </div>
+
+    <!-- Intro + liste d'étapes + 2 images -->
+    <div class="card">
+      <div class="t">Section title</div>
+      <div class="x">
+        Intro line.
+        <ul class="dash">
+          <li>Step</li>
+          <li>Step</li>
+          <li>Step</li>
+          <li>Step</li>
+        </ul>
+      </div>
+      <div class="imgs" style="--n:1">
+        <div class="ph wide">image</div>
+        <div class="ph wide">image</div>
+      </div>
+    </div>
+
+    <!-- Texte + images avec légendes -->
+    <div class="card">
+      <div class="t">Section title</div>
+      <div class="x">Text.</div>
+      <div class="imgs" style="--n:1">
+        <figure><div class="ph wide">image</div><figcaption class="cap">Caption.</figcaption></figure>
+        <figure><div class="ph wide">image</div><figcaption class="cap">Caption.</figcaption></figure>
+        <div class="ph wide">image</div>
+      </div>
+    </div>
+
+    <!-- Vidéo + texte + liste (variante audio) -->
+    <div class="card">
+      <div class="t">Section title</div>
+      <div class="ph video">video</div>
+      <div class="x">
+        Text.
+        <ul class="dash">
+          <li>Item</li>
+          <li>Item</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Mises à jour à venir + bouton de jeu -->
+    <div class="card">
+      <div class="t">Section title</div>
+      <div class="x">
+        Text.
+        <ul class="dash">
+          <li>First update: item</li>
+          <li>Next update: item</li>
+        </ul>
+      </div>
+      <a class="ph wide" href="#">game button</a>
+      <p class="cap">click to play the game!</p>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="icons">
+      <a href="#">mail</a>
+      <a href="#">itch.io</a>
+      <a href="#">youtube</a>
+      <a href="#">cara</a>
+      <a href="#">linkedin</a>
+    </div>
+    <p>© 2026 Dorian Wiame</p>
+  </footer>
+
+</div>
+</body>
+</html>
