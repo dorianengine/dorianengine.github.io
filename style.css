@@ -244,3 +244,27 @@ figure .ph.video{width:100%}
 .card .media{align-items:start}
 @media (max-width:1000px){.grid.games>.col.s3{grid-column:1/-1}.grid.games>.col.s2{grid-column:1/-1}}
 .yt{font-size:.85rem;text-align:center;color:inherit;opacity:.8}
+
+/* ===== My games : une ligne par jeu, comme sur WordPress ===== */
+.gm{display:grid;grid-template-columns:2fr 1fr;gap:var(--gap);align-items:center}
+.gm>.box{align-self:stretch;display:block;text-align:left}
+.gm .box strong{font-family:'Archivo Black';font-weight:400}
+.gm .pic.logo img{max-width:180px;margin:0 auto}
+.gm .btn{grid-column:1/-1;margin-top:0}
+.gm .media{gap:var(--in);align-items:center}
+@media (max-width:800px){.gm{grid-template-columns:1fr}}
+
+/* ===== icônes du footer (dossier picture/) ===== */
+.icons{gap:calc(var(--gap)/1.5)}
+.icons a,.icons a:hover{width:64px;height:64px;padding:0;background:none;border:0;border-radius:50%;display:block}
+.icons a img{width:100%;height:100%;display:block;border-radius:50%}
+.icons a:hover img{box-shadow:0 0 0 4px var(--orange)}
+/* icônes parfaitement rondes (même si le PNG est carré) */
+.icons a,.icons a:hover{width:68px;height:68px;border-radius:50%;overflow:hidden;background:var(--black)}
+.icons a img{border-radius:50%;object-fit:cover;aspect-ratio:1}
+.icons a:hover{overflow:visible;box-shadow:0 0 0 4px var(--orange)}
+.icons a:hover img{box-shadow:none}
+/* icônes : coins arrondis 5pt */
+.icons a,.icons a:hover{border-radius:5pt;background:none;overflow:visible}
+.icons a img{border-radius:5pt;object-fit:contain}
+.icons a:hover{box-shadow:0 0 0 4px var(--orange)}
