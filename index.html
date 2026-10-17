@@ -13,7 +13,8 @@
 
   <header class="top">
     <a class="block logo" href="about.html"><span>Dorian Wiame</span></a>
-    <nav class="nav"><a href="index.html" class="on">Home</a><a href="games.html">My games</a><a href="the-wrong-path.html">The wrong path</a><a href="audio.html">Audio product</a><a href="about.html">About me</a></nav>
+    <button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+    <nav class="nav" id="nav"><a href="index.html" class="on">Home</a><a href="games.html">My games</a><a href="the-wrong-path.html">The wrong path</a><a href="audio.html">Audio product</a><a href="about.html">About me</a></nav>
   </header>
 
   <main>
@@ -32,5 +33,11 @@
   </footer>
 
 </div>
+<script>
+(function(){var h=document.querySelector('.top'),b=document.querySelector('.burger');
+if(!h||!b)return;
+b.addEventListener('click',function(){var o=h.classList.toggle('open');b.setAttribute('aria-expanded',o);});
+})();
+</script>
 </body>
 </html>

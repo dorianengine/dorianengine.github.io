@@ -3,7 +3,7 @@
   --peach: #f2cbae;        /* fond de page + intérieur des boîtes */
   --coral: #f5a869;        /* orange clair : cartes */
   --orange: #ff9d00;       /* orange : cadres */
-  --brown: #66402a;        /* hover (famille orange) */
+  --brown: #66402a; --brown-mid:#a35a2c;        /* hover (famille orange) */
   --lilac: #e0aaf5;        /* intérieur des boîtes "nouveau" */
   --violet: #7a00ff;       /* cadre "nouveau jeu" */
   --violet-soft: #a259ff;  /* carte "nouveau" */
@@ -165,7 +165,9 @@ figure .ph.video{width:100%}
 
 /* header fixe */
 .wrap{padding-top:0}
-.top{position:sticky;top:0;z-index:50;background:var(--peach);padding:var(--gap) 0 calc(var(--gap)/2);margin-bottom:calc(var(--gap)/-2)}
+.top{position:sticky;top:0;z-index:50;padding:var(--gap) 0;margin-bottom:calc(var(--gap)*-1);
+  /* fond pêche plein en haut (rien ne transparaît) ; fondu vers 0% d'opacité seulement en dessous */
+  background:linear-gradient(to bottom,var(--peach) 0,var(--peach) calc(100% - var(--gap)*1.1),rgba(242,203,174,0) 100%)}
 /* images plus petites */
 .imgs.sm .ph{background:none}
 .imgs.sm .ph img{height:auto;max-height:340px;object-fit:contain}
@@ -276,3 +278,99 @@ figure .ph.video{width:100%}
 /* About : logiciels, texte à gauche / bloc logos à droite */
 .card .row.r23{grid-template-columns:2fr 3fr;align-items:start}
 .card .row .x{height:auto}
+
+/* ===== menu burger (téléphone) ===== */
+.burger{display:none}
+@media (max-width:800px){
+  .top{grid-template-columns:1fr auto;gap:var(--in);align-items:stretch}
+  .top .logo span{font-size:clamp(1.6rem,7vw,2.4rem)}
+  .burger{display:flex;flex-direction:column;justify-content:center;gap:6px;width:72px;padding:0 18px;border:0;cursor:pointer;background:var(--peach);border-radius:var(--r);box-shadow:0 0 0 var(--pad) var(--orange);margin:var(--pad)}
+  .burger span{display:block;height:4px;border-radius:2px;background:var(--black);transition:transform .2s,opacity .2s}
+  .burger:hover{box-shadow:0 0 0 var(--pad) var(--orange),inset 0 0 0 4px var(--brown)}
+  .top.open .burger span:nth-child(1){transform:translateY(10px) rotate(45deg)}
+  .top.open .burger span:nth-child(2){opacity:0}
+  .top.open .burger span:nth-child(3){transform:translateY(-10px) rotate(-45deg)}
+  .nav{display:none;grid-column:1/-1;grid-template-columns:1fr}
+  .top.open .nav{display:grid}
+  .nav a{padding:.8rem 1rem;font-size:1.2rem}
+}
+
+/* ===== Arrière-plan global : Mauve lumineux en haut, Pêche au milieu, Orange flash sur les 10% du bas ===== */
+body {
+  background: linear-gradient(
+    180deg,
+    var(--peach) 40%,
+    var(--peach) 90%,
+    var(--orange) 100%
+  );
+  background-attachment: fixed;
+}
+/* ===== 3 bandes verticales de chaque côté avec dégradé d'opacité vers le centre ===== */
+@media (min-width: 1000px) {
+  body::before,
+  body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    z-index: -1;
+    pointer-events: none;
+
+    /* Occupe toute la hauteur et tout l'espace vide des marges */
+    width: calc((100vw - 1400px) / 2 + 20px);
+    min-width: 120px;
+    height: 100vh;
+
+    filter: blur(1px); /* Flou fixé à 1px */
+  }
+
+  /* --- CÔTÉ GAUCHE : 3 bandes mauves s'estompant vers la droite (centre) --- */
+  body::before {
+    left: 0;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--brown) 0%,        var(--brown) 28%,       /* Bande 3 : Brun */
+      var(--peach) 28%,        var(--peach) 36%,       /* Espace couleur fond */
+      var(--orange) 36%,       var(--orange) 64%,      /* Bande 2 : Orange */
+      var(--peach) 64%,        var(--peach) 72%,       /* Espace couleur fond */
+      #ff5500 72%,              #ff5500 100%            /* Bande 1 : Orange flash */
+    );
+    /* Masque d'opacité : opaque au bord de l'écran (0%), transparent vers le centre (100%) */
+    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+    mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+  }
+
+  /* --- CÔTÉ DROIT : 3 bandes (Brun, Orange, Orange Flash) s'estompant vers la gauche (centre) --- */
+  body::after {
+    right: 0;
+    background: repeating-linear-gradient(
+      90deg,
+      #ff5500 0%,              #ff5500 28%,            /* Bande 1 : Orange flash */
+      var(--peach) 28%,        var(--peach) 36%,       /* Espace couleur fond */
+      var(--orange) 36%,       var(--orange) 64%,      /* Bande 2 : Orange */
+      var(--peach) 64%,        var(--peach) 72%,       /* Espace couleur fond */
+      var(--brown) 72%,        var(--brown) 100%       /* Bande 3 : Brun */
+    );
+    /* Masque d'opacité : opaque au bord de l'écran (100%), transparent vers le centre (0%) */
+    -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+    mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+  }
+}
+
+/* ===== hover "escalier" années 70 : des contours se créent vers le CENTRE du bloc (brun > corail > orange) ===== */
+.block,.nav a,.btn{position:relative;transition:box-shadow .35s cubic-bezier(.4,0,.2,1);
+  box-shadow:inset 0 0 0 0 transparent,inset 0 0 0 0 transparent,inset 0 0 0 0 transparent}
+.icons a{transition:box-shadow .35s cubic-bezier(.4,0,.2,1);box-shadow:0 0 0 0 transparent,0 0 0 0 transparent,0 0 0 0 transparent}
+.block span{box-shadow:none!important}
+.block:hover{box-shadow:inset 0 0 0 4px var(--brown),inset 0 0 0 8px var(--coral),inset 0 0 0 11px var(--orange)}
+.block.new:hover{box-shadow:inset 0 0 0 4px var(--plum),inset 0 0 0 8px #cc55f5,inset 0 0 0 11px var(--violet)}
+.nav a:hover,.nav a.on{box-shadow:inset 0 0 0 3px var(--brown),inset 0 0 0 6px var(--coral),inset 0 0 0 9px var(--orange)}
+.btn:hover{box-shadow:inset 0 0 0 3px var(--plum),inset 0 0 0 6px #cc55f5,inset 0 0 0 9px var(--violet-soft)}
+.icons a:hover{box-shadow:0 0 0 3px var(--orange),0 0 0 6px var(--coral),0 0 0 9px var(--brown)}
+@media (prefers-reduced-motion:reduce){.block,.nav a,.btn,.icons a{transition:none}}
+
+/* ===== images cliquables : contours vers l'EXTÉRIEUR (pas les vidéos YouTube) ===== */
+.pic a{display:block;border-radius:var(--r);transition:box-shadow .35s cubic-bezier(.4,0,.2,1);
+  box-shadow:0 0 0 0 transparent,0 0 0 0 transparent,0 0 0 0 transparent}
+.pic.logo a{width:fit-content;max-width:100%;margin:0 auto}
+.pic a:hover{box-shadow:0 0 0 4px var(--brown),0 0 0 8px var(--coral),0 0 0 11px var(--orange)}
+@media (prefers-reduced-motion:reduce){.pic a{transition:none}}
