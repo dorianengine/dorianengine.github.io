@@ -361,8 +361,8 @@ body {
   box-shadow:inset 0 0 0 0 transparent,inset 0 0 0 0 transparent,inset 0 0 0 0 transparent}
 .icons a{transition:box-shadow .35s cubic-bezier(.4,0,.2,1);box-shadow:0 0 0 0 transparent,0 0 0 0 transparent,0 0 0 0 transparent}
 .block span{box-shadow:none!important}
-.block:hover{box-shadow:inset 0 0 0 4px var(--brown),inset 0 0 0 8px var(--coral),inset 0 0 0 11px var(--orange)}
-.block.new:hover{box-shadow:inset 0 0 0 4px var(--plum),inset 0 0 0 8px #cc55f5,inset 0 0 0 11px var(--violet)}
+a.block:hover{box-shadow:inset 0 0 0 4px var(--brown),inset 0 0 0 8px var(--coral),inset 0 0 0 11px var(--orange)}
+a.block.new:hover{box-shadow:inset 0 0 0 4px var(--plum),inset 0 0 0 8px #cc55f5,inset 0 0 0 11px var(--violet)}
 .nav a:hover,.nav a.on{box-shadow:inset 0 0 0 3px var(--brown),inset 0 0 0 6px var(--coral),inset 0 0 0 9px var(--orange)}
 .btn:hover{box-shadow:inset 0 0 0 3px var(--plum),inset 0 0 0 6px #cc55f5,inset 0 0 0 9px var(--violet-soft)}
 .icons a:hover{box-shadow:0 0 0 3px var(--orange),0 0 0 6px var(--coral),0 0 0 9px var(--brown)}
@@ -374,3 +374,38 @@ body {
 .pic.logo a{width:fit-content;max-width:100%;margin:0 auto}
 .pic a:hover{box-shadow:0 0 0 4px var(--brown),0 0 0 8px var(--coral),0 0 0 11px var(--orange)}
 @media (prefers-reduced-motion:reduce){.pic a{transition:none}}
+
+/* ===== titres sans page dédiée : pas de hover ni de lien ===== */
+.block.static{cursor:default}
+
+/* ===== texte : gras ===== */
+.b{font-weight:700}
+
+/* ===== images/vidéos : mise en page des sections ===== */
+/* une seule ligne d'images, même sur téléphone */
+@media (max-width:800px){
+  .media{grid-template-columns:repeat(var(--n,3),1fr);gap:var(--in)}
+  .media.w2{grid-template-columns:repeat(2,1fr)}
+  .media.v1{grid-template-columns:1fr;gap:var(--gap);justify-items:stretch}
+  .media.m1{grid-template-columns:1fr}
+  .media.m1>.pic:nth-child(n+2){display:none}
+}
+.media.v1 .stack{align-content:start}
+/* sections pleine largeur : texte d'un côté, images de l'autre ; empilées sur téléphone */
+.card.split{grid-template-columns:var(--cols,1fr 1fr);align-items:stretch}
+.card.split>.stack,.card.split>.pic{align-content:start;align-self:start}
+@media (max-width:800px){.card.split{grid-template-columns:1fr}}
+/* about : image des logiciels moins grosse que le texte */
+.card .row.r23{grid-template-columns:3fr 2fr}
+.card .row.r23 .pic.sw img{width:auto;max-width:100%;max-height:340px;margin:0 auto;object-fit:contain}
+@media (max-width:800px){.card .row.r23{grid-template-columns:1fr}}
+
+/* ===== comparateur avant / après (the wrong path) ===== */
+.cmp{--p:50%;position:relative;display:grid;border-radius:var(--r);overflow:hidden;user-select:none;touch-action:pan-y}
+.cmp img{grid-area:1/1;width:100%;height:auto;align-self:stretch;object-fit:cover;display:block;border-radius:0}
+.cmp .after{clip-path:inset(0 0 0 var(--p))}
+.cmp .bar{position:absolute;top:0;bottom:0;left:var(--p);width:4px;margin-left:-2px;background:var(--orange);box-shadow:0 0 0 2px var(--brown);pointer-events:none}
+.cmp .bar::after{content:"↔";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:42px;height:42px;border-radius:50%;background:var(--peach);border:4px solid var(--brown);display:grid;place-items:center;font-size:1.1rem}
+.cmp .tag{position:absolute;top:10px;padding:.15rem .7rem;border-radius:var(--r);background:var(--peach);font-size:.85rem;pointer-events:none}
+.cmp .tag.l{left:10px}.cmp .tag.r{right:10px}
+.cmp input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;-webkit-appearance:none;appearance:none}

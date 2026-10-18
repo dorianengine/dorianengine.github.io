@@ -3,101 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dorian Wiame</title>
+  <title>Home – Dorian Wiame</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Lobster&family=Questrial&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="wrap">
 
-  <!-- Filtre qui déforme les lignes du fond en vagues (animé lentement) -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-    <filter id="wave" x="0" y="0" width="100%" height="100%">
-      <feTurbulence type="fractalNoise" baseFrequency="0.0012 0.004" numOctaves="1" seed="4" result="noise">
-        <animate attributeName="baseFrequency" dur="45s" repeatCount="indefinite"
-                 values="0.0012 0.004; 0.0022 0.006; 0.0012 0.004"/>
-      </feTurbulence>
-      <feDisplacementMap in="SourceGraphic" in2="noise" scale="420" xChannelSelector="R" yChannelSelector="G"/>
-    </filter>
-  </svg>
-
-  <header>
-    <a class="logo" href="#home">Dorian Wiame</a>
-    <nav>
-      <a href="#home" class="on">Home</a>
-      <a href="#projects">Projects</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
+  <header class="top">
+    <a class="block logo" href="about.html"><span>Dorian Wiame</span></a>
+    <button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+    <nav class="nav" id="nav"><a href="index.html" class="on">Home</a><a href="games.html">My games</a><a href="the-wrong-path.html">The wrong path</a><a href="audio.html">Audio product</a><a href="about.html">About me</a></nav>
   </header>
 
-  <main class="container">
-
-    <section id="home" class="top-row">
-      <div class="title-box">My projects</div>
-      <div class="box">A short sentence to introduce what you do and what people will find here.</div>
-    </section>
-
-    <div class="bar" aria-hidden="true"></div>
-
-    <!-- Un jeu : copie ce bloc <section class="game"> pour en ajouter -->
-    <section id="projects" class="game">
-      <div class="left">
-        <div class="title-box">Game title</div>
-        <div class="desc">Description: context, what you did, what you learned.</div>
-      </div>
-      <div class="right">
-        <a href="#" class="ph feat">icon</a>
-        <div class="thumbs">
-          <div class="ph">image</div>
-          <div class="ph">image</div>
-          <div class="ph">image</div>
-        </div>
-      </div>
-      <div class="cta"><a href="#" class="btn">click to learn more</a></div>
-    </section>
-
-    <div class="bar" aria-hidden="true"></div>
-
-    <section class="game">
-      <div class="left">
-        <div class="title-box">Game title</div>
-        <div class="desc">Description of the second project.</div>
-      </div>
-      <div class="right">
-        <a href="#" class="ph feat">icon</a>
-        <div class="thumbs">
-          <div class="ph">image</div>
-          <div class="ph">image</div>
-          <div class="ph">image</div>
-        </div>
-      </div>
-      <div class="cta"><a href="#" class="btn">click to learn more</a></div>
-    </section>
-
-    <div class="bar" aria-hidden="true"></div>
-
-    <section id="about" class="about">
-      <div class="title-box">About me</div>
-      <div class="desc">Introduce yourself here: who you are, what you do, what you like.</div>
-    </section>
-
-    <div class="bar" aria-hidden="true"></div>
-
-    <section id="contact" class="contact">
-      <div class="title-box">Contact</div>
-      <form id="form">
-        <input type="text" placeholder="Your name" required>
-        <input type="email" placeholder="Your email" required>
-        <textarea placeholder="Your message" rows="4" required></textarea>
-        <button class="btn" type="submit">Send</button>
-      </form>
-    </section>
-
+  <main>
+<div class="grid games"><div class="col s3"><a class="block" href="about.html"><span>Game designer</span></a><div class="card"><div class="x  c">I’m a game designer, passionate about narrative design and worldbuilding. I am also an aspiring sound designer, music producer and voice actor.</div></div></div><div class="col s1"><a class="block" href="games.html"><span>My games</span></a><div class="card"><div class="x  c">These are games I helped to create, either with team management, game design or sound design.</div><figure class="pic "><a href="games.html"><img src="https://dorianwiamegd.wordpress.com/wp-content/uploads/2025/09/mygamesportfolio.png" alt="" loading="lazy"></a></figure></div></div><div class="col s1"><a class="block" href="the-wrong-path.html"><span>The Wrong Path</span></a><div class="card"><div class="x  c">The Wrong Path is a side project I started in 2020 which trained my worldbuilding and narration skills.</div><figure class="pic "><a href="the-wrong-path.html"><img src="https://dorianwiamegd.wordpress.com/wp-content/uploads/2025/09/thewrongpathportfolio.png" alt="" loading="lazy"></a></figure></div></div><div class="col s1"><a class="block" href="audio.html"><span>Audio product</span></a><div class="card"><div class="x  c">This page will showcase what I call audio product: music production, sound design or even voice acting.</div><figure class="pic "><a href="audio.html"><img src="https://dorianwiamegd.wordpress.com/wp-content/uploads/2026/06/background-be-still.png" alt="" loading="lazy"></a></figure></div></div></div>
   </main>
 
-  <footer>© 2026 Dorian Wiame</footer>
+  <footer>
+    <div class="icons">
+      <a href="mailto:dorianwiame@gmail.com" aria-label="Mail"><img src="picture/mail-icon.png" alt="Mail"></a>
+      <a href="https://dorian-engine.itch.io/" aria-label="itch.io"><img src="picture/itchio-icon.png" alt="itch.io"></a>
+      <a href="https://www.youtube.com/@dorianengine1135" aria-label="YouTube"><img src="picture/youtube-icon.png" alt="YouTube"></a>
+      <a href="https://www.twitch.tv/dorianengine" aria-label="Twitch"><img src="picture/twitch-icon.png" alt="Twitch"></a>
+      <a href="https://www.linkedin.com/in/dorian-wiame-8576bb238/" aria-label="LinkedIn"><img src="picture/linkedin-icon.png" alt="LinkedIn"></a>
+    </div>
+    <p>© 2026 Dorian Wiame</p>
+  </footer>
 
-  <script src="script.js"></script>
+</div>
+<script>
+(function(){var h=document.querySelector('.top'),b=document.querySelector('.burger');
+if(!h||!b)return;
+b.addEventListener('click',function(){var o=h.classList.toggle('open');b.setAttribute('aria-expanded',o);});
+})();
+</script>
 </body>
 </html>
